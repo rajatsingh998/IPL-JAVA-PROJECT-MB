@@ -37,12 +37,12 @@ public class my_project
             Scanner sc=new Scanner(System.in);
             int response= sc.nextInt();
 
-            String myFile="matches"; //Give dataset path here
-            String myFile1="deliveries";
+            String matches="matches"; //Give dataset path here
+            String deliveries="deliveries";
             ArrayList<HashMap<String, String>> data;
             ArrayList<HashMap<String, String>> data1;
-            data=addd(myFile);
-            data1=addd(myFile1);
+            data=add(matches);
+            data1=add(deliveries);
 
             switch(response){
                 case 1:
@@ -73,14 +73,9 @@ public class my_project
                 case 6:
                     System.exit(0);
                     break;
-
                 default:
                     System.out.println("\n Entered wrong response");
             }
-
-
-
-
     }
 
 
@@ -235,7 +230,7 @@ public class my_project
 
 
 
- public static  ArrayList<HashMap<String, String>> addd(String my_file) {
+ public static  ArrayList<HashMap<String, String>> add(String my_file) {
      try {
          FileReader filereader = new FileReader(my_file);
          CSVReader csvReader = new CSVReaderBuilder(filereader).withSkipLines(0).build();
