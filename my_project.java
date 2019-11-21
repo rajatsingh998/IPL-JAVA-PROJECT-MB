@@ -23,15 +23,15 @@ public class my_project
 
             String my_file="D:\\MY\\Mount blue\\matches.csv"; //Give dataset path here
             String my_file1="D:\\MY\\Mount blue\\deliveries.csv";
-            ArrayList<HashMap<String, String>> data= new ArrayList<HashMap<String, String>>();
-            ArrayList<HashMap<String, String>> data1= new ArrayList<HashMap<String, String>>();
+            ArrayList<HashMap<String, String>> data;
+            ArrayList<HashMap<String, String>> data1;
             data=addd(my_file);
             data1=addd(my_file1);
 
 
             //Question 1:
-            HashMap<String, Integer> ques1= new HashMap<String, Integer>();
-            String date=new String();
+            HashMap<String, Integer> ques1= new HashMap<>();
+            String date;
             for(int i=0;i<data.size();i++){
                 date=data.get(i).get("season");
                 if(ques1.containsKey(date)){
@@ -46,8 +46,8 @@ public class my_project
              System.out.println("Number of matches played per year of all the years in IPL are: \n"+ ques1);
 
             //Question 2:
-            HashMap<String, Integer> ques2= new HashMap<String, Integer>();
-            String team=new String();
+            HashMap<String, Integer> ques2= new HashMap<>();
+            String team;
 
             for(int i=0;i< data.size();i++){
                 team=data.get(i).get("winner");
@@ -65,8 +65,8 @@ public class my_project
             System.out.println("\n"+"Number of matches won of all teams over all the years of IPL."+ques2);
 
             //Question 3:
-            ArrayList<String> my_id= new ArrayList<String>();
-            String year=new String();
+            ArrayList<String> my_id= new ArrayList<>();
+            String year;
             for(int i=0;i<data.size();i++){
                 year=data.get(i).get("season");
                 if(year.equals("2016")){
@@ -74,7 +74,7 @@ public class my_project
                 }
             }
 
-            HashMap<String, Integer> ques3= new HashMap<String, Integer>();
+            HashMap<String, Integer> ques3= new HashMap<>();
 
             for (int i=0;i<data1.size();i++){
                String val=data1.get(i).get("match_id");
@@ -93,10 +93,10 @@ public class my_project
                    }
                }
             }
-            System.out.println("For the year 2016 get the extra runs conceded per team.:"+ques3);
+            System.out.println("For the year 2016  the extra runs conceded per team.:"+ques3);
 
             //Question 4:
-            ArrayList<String> id= new ArrayList<String>();
+            ArrayList<String> id= new ArrayList<>();
             for(int i=0;i<data.size();i++){
                 year=data.get(i).get("season");
                 if(year.equals("2015")){
@@ -104,9 +104,9 @@ public class my_project
                 }
             }
 
-            HashMap<String, Integer> player= new HashMap<String, Integer>();
-            HashMap<String, Integer> ques4= new HashMap<String, Integer>();
-            HashMap<String, Integer> bowl=new HashMap<String, Integer>();
+            HashMap<String, Integer> player= new HashMap<>();
+            HashMap<String, Integer> ques4= new HashMap<>();
+            HashMap<String, Integer> bowl= new HashMap<>();
             for(int i=0;i<data1.size();i++){
                 String val=data1.get(i).get("match_id");
                 if(id.contains(val)){
@@ -156,7 +156,23 @@ public class my_project
         }
         System.out.print("\n For the year 2015 get the top economical bowlers."+ans);
 
-        
+        // Question 5:
+        HashMap<String, Integer> ques5= new HashMap<>();
+        String player_of_the_match;
+        for(int j=0;j<data.size();j++){
+            player_of_the_match=data.get(j).get("player_of_match");
+            if(player_of_the_match.length()>0) {
+                if (ques5.containsKey(player_of_the_match)) {
+                    int val = ques5.get(player_of_the_match);
+                    val = val + 1;
+                    ques5.replace(player_of_the_match, val);
+                } else {
+                    ques5.put(player_of_the_match, 1);
+                }
+            }
+        }
+
+        System.out.println("\n No of player of the match :"+ ques5);
 
     }
  public static  ArrayList<HashMap<String, String>> addd(String my_file) {
@@ -187,18 +203,18 @@ public class my_project
      ArrayList<HashMap<String, String>> data = new ArrayList<HashMap<String, String>>();
  return data;}
 
-    public static HashMap<String, Integer> sortByValue(HashMap<String, Integer> hm)
+    public static HashMap<String, Integer> sortByValue(HashMap<String, Integer> ques4)
     {
 
-        List<Map.Entry<String, Integer> > list = new LinkedList<>(hm.entrySet());
+        List<Map.Entry<String, Integer> > list = new LinkedList<>(ques4.entrySet());
 
 
         Collections.sort(list, Comparator.comparing(Map.Entry::getValue));
 
 
         HashMap<String, Integer> temp = new LinkedHashMap<>();
-        for (Map.Entry<String, Integer> aa : list) {
-            temp.put(aa.getKey(), aa.getValue());
+        for (Map.Entry<String, Integer> tempp : list) {
+            temp.put(tempp.getKey(), tempp.getValue());
         }
         return temp;
     }
