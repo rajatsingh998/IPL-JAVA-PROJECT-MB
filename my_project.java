@@ -29,7 +29,7 @@ public class my_project
             data1=addd(my_file1);
 
 
-            //Question 1:
+            //Question 1: Number of matches played per year of all the years in IPL.
             HashMap<String, Integer> ques1= new HashMap<>();
             String date;
             for(int i=0;i<data.size();i++){
@@ -45,7 +45,7 @@ public class my_project
             }
              System.out.println("Number of matches played per year of all the years in IPL are: \n"+ ques1);
 
-            //Question 2:
+            //Question 2:  Number of matches won of all teams over all the years of IPL.
             HashMap<String, Integer> ques2= new HashMap<>();
             String team;
 
@@ -64,7 +64,7 @@ public class my_project
 
             System.out.println("\n"+"Number of matches won of all teams over all the years of IPL."+ques2);
 
-            //Question 3:
+            //Question 3: For the year 2016 get the extra runs conceded per team.
             ArrayList<String> my_id= new ArrayList<>();
             String year;
             for(int i=0;i<data.size();i++){
@@ -95,7 +95,7 @@ public class my_project
             }
             System.out.println("For the year 2016  the extra runs conceded per team.:"+ques3);
 
-            //Question 4:
+            //Question 4: For the year 2015 get the top economical bowlers.
             ArrayList<String> id= new ArrayList<>();
             for(int i=0;i<data.size();i++){
                 year=data.get(i).get("season");
@@ -182,7 +182,7 @@ public class my_project
          List<String[]> allData = csvReader.readAll();
          System.out.println(allData.size());
          ArrayList<HashMap<String, String>> data = new ArrayList<HashMap<String, String>>();
-         int x = allData.size();
+
 
          String[] keys = allData.get(0);
          for (String[] row : allData) {
